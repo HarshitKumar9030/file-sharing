@@ -9,7 +9,7 @@ services:
     volumes:
       - ./uploads:/app/uploads
     restart: unless-stopped
-    command: ["chmod +x /app/file-sharing", "/app/file-sharing"] # Ensure executable and run
+    # command is handled by Dockerfile CMD
 
   nginx-proxy:
     image: nginx:alpine

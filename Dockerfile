@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y libssl-dev ca-certificates && rm -rf /v
 
 # Copy the binary from the builder stage
 COPY --from=builder /usr/src/app/target/release/file-sharing /app/file-sharing
+RUN chmod +x /app/file-sharing
 
 # Create uploads directory
 RUN mkdir -p /app/uploads
