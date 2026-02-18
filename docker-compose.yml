@@ -5,22 +5,7 @@ services:
     build: .
     container_name: file_sharing_app
     ports:
-      - "8080:8080" # Map host:container
+      - "8080:8080"
     volumes:
       - ./uploads:/app/uploads
     restart: unless-stopped
-    # command is handled by Dockerfile CMD
-
-  nginx-proxy:
-    image: nginx:alpine
-    container_name: file_sharing_nginx
-    ports:
-      - "80:80"
-    depends_on:
-      - file-sharing-app
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    restart: always
-
-# If you prefer to integrate with an *existing* nginx container (e.g. jwilder/nginx-proxy or custom),
-# you might not need this service block. Instead, configure your existing nginx to proxy to `file-sharing-app:8080`.
